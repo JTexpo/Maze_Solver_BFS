@@ -1,0 +1,135 @@
+<html>
+
+<head>
+    <!-- PyScript: https://github.com/pyscript/pyscript/releases -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.05.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js"></script>
+    <!-- Bootstrap: https://getbootstrap.com -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- local Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <py-config>
+        packages = []
+        [[fetch]]
+        files = ["./main.py", "./maze_solver_bfs/maze_solver.py"]
+    </py-config>
+</head>
+
+<body>
+    <!-- Healthy Spacing -->
+    <br>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col logo-flex-col">
+                    <img onclick="window.location.href = 'https://jtexpo.github.io'" src="../assets/images/jtexpo.png"
+                        alt="" class="logo-img">
+                    <a href="https://jtexpo.github.io" class="display-3 logo-main-text">JTexpo</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="display-4 text-center">
+                        <a href="https://www.youtube.com/@JTexpo" target="_blank" class="logo-sub-text">
+                            Content To Tr<span style="color: #F3AF56;">AI</span>n Your Brain
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Healthy Spacing -->
+    <br>
+    <br>
+    <!-- Maze Solver BFS -->
+    <main>
+        <div class="container">
+            <!-- Board -->
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2">
+                    <button class="btn btn-block btn-success" py-click="solve()">Solve</button>
+                </div>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2">
+                    <button class="btn btn-block btn-danger" py-click="clear_board()">Clear</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <canvas id="maze" class="mx-auto" width="500" height="500" style="align-content: center;"></canvas>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2">
+                    <button class="btn btn-block btn-dark" py-click="toggle_mode(DRAW_MODE_KEY)">Draw</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-block btn-light" py-click="toggle_mode(ERASE_MODE_KEY)">Erase</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-block btn-success" py-click="toggle_mode(START_MODE_KEY)">Start</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-block btn-danger" py-click="toggle_mode(END_MODE_KEY)">End</button>
+                </div>
+            </div>
+            
+            <!-- Healthy Spacing -->
+            <br>
+            <br>
+            <br>
+            <!-- Explination -->
+            <!-- How to use this app -->
+            <div class="row">
+                <div class="h2 info-header">How to use this app</div>
+            </div>
+            <div class="row">
+                <div class="h4 info-body">
+                    Upon entering the page, you'll encounter an engaging maze! 
+                    You have the option to tackle the challenge on your own or opt for an automated solution by clicking the 'Solve' button, demonstrating how a breadth-first search algorithm navigates through the puzzle. <br><br>
+                    If you wish to customize the maze, utilize the four buttons beneath the puzzle labeled: Draw, Erase, Start, and End. 
+                    These buttons allow you to place tiles strategically. <br><br>
+                    Keep in mind that you can only set one starting point and one ending point; repositioning them will replace the previous ones. 
+                    Once satisfied with your maze configuration, use the 'Clear' button to wipe the slate clean and remove all tiles from the maze! <br><br>
+                </div>
+            </div>
+            <!-- What is a RNN -->
+            <div class="row">
+                <div class="h2 info-header">What is Breadth First Search?</div>
+            </div>
+            <div class="row">
+                <div class="h4 info-body">
+                    Breadth-first search (BFS) is an algorithm that traverses a graph in waves. 
+                    Imagine dropping water into a maze, BFS explores everything simultaneously! <br><br>
+                    This characteristic makes BFS particularly advantageous in scenarios where the end-goal might be too obstructed for a depth-first search to uncover. 
+                    For instance, navigating an open field would render a depth-first search less effective. <br><br>
+                    Advanced pathfinding algorithms, like A-Star, draw inspiration from the broad exploration of BFS waves. 
+                    In the realm of video games, A-Star is commonly employed for enemy AI to detect the player's location. <br><br>
+                    BFS is not only limited to mazes but finds applications in network routing, social network analysis, and more. 
+                    Its versatility makes it a fundamental algorithm in computer science. <br><br>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Healthy Spacing -->
+    <br>
+    <br>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="h4 footer-rights">&copy; 2023 Justin Tyler Esposito. All rights reserved.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <py-script src="./main.py"></py-script>
+</body>
+
+</html>
